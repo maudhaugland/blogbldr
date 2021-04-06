@@ -38,9 +38,6 @@ collections:
   homepageitems:
     output: true
     layout: page
-  recipes:
-    output: true
-    layout: content
 
 # BUILD SETTINGS
 kramdown:

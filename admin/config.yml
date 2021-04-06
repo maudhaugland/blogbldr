@@ -107,44 +107,6 @@ collections:
         widget: "hidden"
         default: "page"
 
-  # uncomment out the following collection block if you want to create a new pages inside the content block. DO NOT UNCOMMENT this paragraph!
-
-  - name: "recipes"
-    label: "Recipes" # Used in the UI
-    label_singular: "Recipes"
-    description: "This is where you add your recipes. The pages will be styled with the recipes.css file so you need to edit this for your own styling."
-    folder: "_recipes/" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    delete: true
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    media_folder: "/uploads"
-    public_folder: "../uploads"
-    editor:
-      preview: false
-    fields: # The fields for each document, usually in front matter
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Order"
-        name: "order"
-        widget: "number"
-        value_type: "int"
-        default: 1
-        min: 1
-        max: 20
-        hint: "If you want to order the recipes rather than the default alphabetical ordering then put a number here (1 will be at the top of the recipe list page)."
-      - label: "Publish Date"
-        name: "date"
-        widget: "datetime"
-      - label: "Main Text"
-        name: "body"
-        widget: "markdown"
-        hint: "Put here the text about this recipe including pictures and even videos on YouTube. Remweber the first paragraph will show on the recipe listing page."
-      - label: "Layout"
-        name: "layout"
-        widget: "hidden"
-        default: "recipe"
-
   # uncomment out the following collection block if you want to use a home page rather than the blog on the home page. This needs to be done after you have changed the settings in the _config.yml file in the root of your project. DO NOT UNCOMMENT this paragraph!
 
   # - name: "homepageitems"
