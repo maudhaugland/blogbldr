@@ -1,11 +1,11 @@
-/* Version 2 */
-/* wanna show some code */
+/* code */
 @import "highlighter.css";
 
 html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     background: #fff;
+    scroll-behavior: smooth;
 }
 
 * {
@@ -760,12 +760,17 @@ align-items: center;
 .site-header nav li {
     display: inline;
     float: left;
-    margin-right: 0.4em
-}
-
-.site-header nav a:hover {
-    color: #337ab7
-}
+    margin: 0;
+    padding: 5px 9px;
+  }
+  
+  .site-header nav a:hover {
+    color: #812db9;
+  }
+  
+  .site-header nav li:hover {
+    background-color: #e4fdbd;
+  }
 
 .site-header nav a#pull i {
     /* margin-top: 13px; */
@@ -813,11 +818,14 @@ align-items: center;
       opacity: .9;
       position: fixed;
       right:0;
-      top: 55px;
-      border-right:20px solid white;
+      top: 55px;  /* this will be changed in the settings */
     }
 
-    nav ul.hide {
+    .site-header nav li {
+        padding-right: 20px;
+      }
+
+    nav ul.willhide {
         font-size: 0;
         margin: 0;
         opacity: 0;
@@ -1381,3 +1389,8 @@ a.word {
   flex-direction: column;
   align-items: center;
 }
+
+
+li.active {
+    background-color: #ebce7f;
+  }

@@ -65,8 +65,41 @@ collections:
       - {
           label: "Tags",
           name: "tags",
-          widget: "list",
-          default: [""],
+          widget: "select",
+          multiple: true,
+          max: 5,
+          options:
+            [
+              "Architecture",
+              "Art",
+              "Books",
+              "Buildings",
+              "Cinema",
+              "Culture",
+              "Design",
+              "Education",
+              "Fonts",
+              "Graphics",
+              "History",
+              "Journalism",
+              "Landscape",
+              "Life",
+              "Literature",
+              "Media",
+              "Music",
+              "Nature",
+              "Packaging",
+              "Personal",
+              "Photography",
+              "Publishing",
+              "Retail",
+              "Science",
+              "Signage",
+              "Transport",
+              "Travel",
+              "TV",
+              "Work",
+            ],
           required: false,
           hint: "By adding tags the posts can be listed together under that tag. You will need to enable the tags page (by turning on show on menu for the tags page.",
         }
@@ -85,6 +118,13 @@ collections:
       preview: false
     fields: # The fields for each document, usually in front matter
       - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Featured Image",
+          name: "header_feature_image",
+          widget: "image",
+          required: false,
+          hint: "This image will appear at the top of your post in the listing but over the feature image on the page.",
+        }
       - {
           label: "Subtitle",
           name: "subtitle",
@@ -107,12 +147,46 @@ collections:
         widget: "hidden"
         default: "page"
 
+  # uncomment out the following collection block if you want to create a new pages inside the content block. DO NOT UNCOMMENT this paragraph!
+
+  - name: "content"
+    label: "Content - Further Pages" # Used in the UI
+    label_singular: "Content Page"
+    description: "This is where you add another section to your site - maybe recipes or photos. The pages will be styled with the content.css file so you need to edit this for your own styling."
+    folder: "_content/" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    delete: true
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    media_folder: "/uploads"
+    public_folder: "../uploads"
+    editor:
+      preview: false
+    fields: # The fields for each document, usually in front matter
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+      - label: "Layout"
+        name: "layout"
+        widget: "select"
+        options:
+          - { label: "Standard Page", value: "page" }
+          - {
+              label: "Unstyled, you can use the content.css file to style yourself.",
+              value: "content",
+            }
+
   # uncomment out the following collection block if you want to use a home page rather than the blog on the home page. This needs to be done after you have changed the settings in the _config.yml file in the root of your project. DO NOT UNCOMMENT this paragraph!
 
   # - name: "homepageitems"
   #   label: "Home Page Blocks" # Used in the UI
   #   label_singular: "Block"
-  #   description: "You can have blocks on the home page with an image and some text. To edit the home page main text and image, edit the page called home in the pages."
+  #   description: "You can have up to 4 blocks on the home page with an image and some text. You cannot add any here but you can unpublsh any of the 4. To edit the home page main text and image, edit the page called home in the pages."
   #   folder: "_homepageitems/" # The path to the folder where the documents are stored
   #   create: true # Allow users to create new documents in this collection
   #   delete: true
@@ -122,11 +196,16 @@ collections:
   #   editor:
   #     preview: false
   #   fields: # The fields for each document, usually in front matter
-  #     - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
-  #     - {label: "Title", name: "title", widget: "string"}
-  #     - {label: "Publish Date", name: "date", widget: "datetime"}
-  #     - {label: "Featured Image", name: "header_feature_image", widget: "image", required: false}
-  #     - {label: "Body", name: "body", widget: "markdown"}
+  #     - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
+  #     - { label: "Title", name: "title", widget: "string" }
+  #     - { label: "Publish Date", name: "date", widget: "datetime" }
+  #     - {
+  #         label: "Featured Image",
+  #         name: "header_feature_image",
+  #         widget: "image",
+  #         required: false,
+  #       }
+  #     - { label: "Body", name: "body", widget: "markdown" }
 
   - label: "Settings"
     name: "data"
@@ -143,7 +222,7 @@ collections:
             name: "title"
             widget: "string"
             required: true
-            hint: "A short title of the site to be displayed top left"
+            hint: "A short title of the site to be displayed top left. Yes, keep this short!"
           - label: "Description"
             name: "description"
             widget: "string"
@@ -182,6 +261,14 @@ collections:
               - { label: "Very Very Deep", value: "60vmax" }
               - { label: "Hero", value: "100vh" }
             hint: "You can choose to have the home page banner image deep but remember the image needs to be high enough originally to fill the space. The height is NOT fixed but responsive and relative to the size of the viewport. If you choose a shallow setting then the optional text may not fit into that space. If you see green colour strips above and below the image, then your banner image is not high enough for your chosen setting. If you choose Hero, the image will fill the home page initially; in this case you will need a header text. It is advised that you fix the Navigation bar when choosing Hero."
+          - label: "Height of Navigation menubar"
+            name: "navbarheight"
+            widget: "select"
+            options:
+              - { label: "Shallow", value: "35px" }
+              - { label: "Normal", value: "55px" }
+              - { label: "Deep", value: "85px" }
+            hint: "You have 3 choices for the menubar. The logo at the left will almost fill the height so make sure this isn't too small (it will resize to fit). Also make sure this logo isn't too long otherwise you may run out of width for the menu items."
 
           - label: "Logo Image top left"
             name: "logo"
