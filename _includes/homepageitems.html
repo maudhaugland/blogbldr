@@ -3,8 +3,8 @@
   {%- assign items = site.homepageitems | sort: 'title' -%}
     {%- for homepageitem in items limit:30 -%}
     <div class="post-teaser">
-        {% if homepageitem.header_feature_image %}
-        {% assign image_url = homepageitem.header_feature_image -%}
+        {% if homepageitem.image %}
+        {% assign image_url = homepageitem.image -%}
         <div class="post-img">
             <a aria-label="{{ homepageitem.title }}" href="{{ homepageitem.url | relative_url }}">
               {%- if item.caption -%}
