@@ -54,6 +54,7 @@ collections:
           name: "comments",
           widget: "boolean",
           default: false,
+          required: false,
           hint: "Only if you setup your Disqus account will this allow comments. If you don't want comments for this post then turn this off.",
         }
       - {
